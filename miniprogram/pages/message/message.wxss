@@ -1,0 +1,13 @@
+.image {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.img {
+  width: 50rpx;
+  height: 50rpx;
+}
+.title {
+  display: flex;
+  flex-direction: row;
+}

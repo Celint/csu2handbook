@@ -1,0 +1,111 @@
+{
+	"miniprogramRoot": "miniprogram/",
+	"cloudfunctionRoot": "cloudfunctions/",
+	"setting": {
+		"urlCheck": false,
+		"es6": true,
+		"postcss": true,
+		"minified": true,
+		"newFeature": true,
+		"nodeModules": true,
+		"autoAudits": false,
+		"checkInvalidKey": true
+	},
+	"appid": "wx5163c62db2f7e7d9",
+	"projectname": "csu2handbook",
+	"libVersion": "2.7.0",
+	"simulatorType": "wechat",
+	"simulatorPluginLibVersion": {},
+	"condition": {
+		"search": {
+			"current": -1,
+			"list": []
+		},
+		"conversation": {
+			"current": -1,
+			"list": []
+		},
+		"plugin": {
+			"current": -1,
+			"list": []
+		},
+		"game": {
+			"list": []
+		},
+		"miniprogram": {
+			"current": 8,
+			"list": [
+				{
+					"id": 0,
+					"name": "detail",
+					"pathName": "pages/detail/detail",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "cart",
+					"pathName": "pages/cart/cart",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "pay",
+					"pathName": "pages/pay/pay",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "myOrders",
+					"pathName": "pages/myOrders/myOrders",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "index",
+					"pathName": "pages/index/index",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "chat",
+					"pathName": "pages/chat/chat",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "upload",
+					"pathName": "pages/upload/upload",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "paycode",
+					"pathName": "pages/paymentCode/paymentCode",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": 8,
+					"name": "send",
+					"pathName": "pages/comment/comment",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "shiping",
+					"pathName": "pages/shipping/shipping",
+					"query": "",
+					"scene": null
+				}
+			]
+		}
+	}
+}

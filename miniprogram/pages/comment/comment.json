@@ -1,0 +1,8 @@
+{
+  "usingComponents": {
+    "van-rate": "../../miniprogram_npm/vant-weapp/rate/index",
+    "van-nav-bar": "../../miniprogram_npm/vant-weapp/nav-bar/index",
+    "van-field": "../../miniprogram_npm/vant-weapp/field/index"
+  },
+  "navigationBarTitleText": "评价"
+}

@@ -1,0 +1,40 @@
+<van-nav-bar
+  title="给卖家一个反馈吧"
+/>
+<view class='rate'>
+  <view>描述相符</view>
+  <van-rate
+    value="{{ value1 }}"
+    icon="like"
+    size="30"
+    void-icon="like-o"
+    bind:change="onChange1"
+    color="red"
+  />
+  <text wx:if="{{value1 == 5}}">非常好</text>
+  <text wx:if="{{value1 == 4}}">好</text>
+  <text wx:if="{{value1 == 3}}">一般</text>
+  <text wx:if="{{value1 == 2}}">差</text>
+  <text wx:if="{{value1 == 1}}">非常差</text>
+</view>
+<view class='rate'>
+  <view>物流速度</view>
+  <van-rate value="{{ value2 }}" bind:change="onChange2" size="30" color="red"/>
+  <text wx:if="{{value2 == 5}}">非常好</text>
+  <text wx:if="{{value2 == 4}}">好</text>
+  <text wx:if="{{value2 == 3}}">一般</text>
+  <text wx:if="{{value2 == 2}}">差</text>
+  <text wx:if="{{value2 == 1}}">非常差</text>
+</view>
+<view class='rate'>
+  <view>服务态度</view>
+  <van-rate value="{{ value3 }}" bind:change="onChange3" size="30" color="red"/>
+  <text wx:if="{{value3 == 5}}">非常好</text>
+  <text wx:if="{{value3 == 4}}">好</text>
+  <text wx:if="{{value3 == 3}}">一般</text>
+  <text wx:if="{{value3 == 2}}">差</text>
+  <text wx:if="{{value3 == 1}}">非常差</text>
+</view>
+<view class='bar'></view>
+<textarea bindinput="comments" auto-height placeholder="收到宝贝书籍就说说你的心得吧！" />
+<button class='button' bindtap='commit'>提交评价</button>

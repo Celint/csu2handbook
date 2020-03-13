@@ -1,0 +1,52 @@
+<view class='img'>
+  <image mode='widthFix' src='{{card.imagePath}}' bindtouchstart='timestart' bindtouchend='timeend' bindtap='saveImg' >
+  </image>
+</view>
+<van-cell-group>
+  <view class='price'>￥{{card.price}}</view>
+  <view class='bookname'>{{card.bookName}}</view>
+  <van-cell title="作者：{{card.author}}"/>
+  <van-cell title="出版社：{{card.press}}"/>
+</van-cell-group>
+<view class='news'> 
+  <van-button size='mini' plain type="primary" open-type='share'>分享商品</van-button>
+  <view>二手书新度：{{card.news}}成新</view> 
+</view>
+<van-cell-group>
+  <van-cell wx:if="{{card.notes != null}}" title="描述信息" value="" size="large" label="{{card.notes}}" />
+</van-cell-group>
+<van-cell-group>
+  <van-cell wx:if="{{card.result != null}}" title="支持送货上门的校区" value="" label="{{card.result}}" size="large" />
+  <van-cell wx:if="{{card.addr != null}}" title="支持上门取件" value="" label="{{card.addr}}" size="large" />
+</van-cell-group>
+<view class='bottom'></view>
+<van-goods-action safe-area-inset-bottom="true">
+  <van-goods-action-icon
+    icon="chat-o"
+    text="联系卖家"
+    bind:click="onClickChat"
+  />
+  <van-goods-action-icon
+    icon="cart-o"
+    text="购物车"
+    bind:click="onClickCart"
+  />
+  <van-goods-action-button
+    text="加入购物车"
+    type="warning"
+    bind:click="onClickAddCard"
+  />
+  <van-goods-action-button
+    text="立即购买"
+    bind:click="onClickBuyItNow"
+  />
+</van-goods-action>
+<van-popup
+  show="{{ save }}"
+  position="bottom"
+  overlay="{{ true }}"
+  safe-area-inset-top="true"
+  bind:click-overlay="onClose"
+>
+  <view class='save' bindtap='saveImage'>保存到本地相册<view class='bottom'></view></view>  
+</van-popup>

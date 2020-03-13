@@ -1,0 +1,91 @@
+<van-notice-bar
+  mode="closeable"
+  text="卖家请注意，为了更愉快地交易，请及时关注卖品动态。"
+/>
+<view class='image'><image mode='aspectFit' wx:if="{{myOrders == null && card == null}}" src='../../images/nothing.png'></image></view>
+<view wx:if='{{card != null}}'>
+  <block wx:for="{{card}}" wx:for-item='card' wx:key="property" wx:for-index='idx'>
+    <van-card
+      wx:if="{{card.status == 2}}"
+      price="{{card.price}}"
+      title="{{card.bookName}} • {{card.author}} • {{card.press}}"
+      thumb="{{ card.imagePath }}"
+    >
+    <view slot='desc' style='color:#7D7E80;'>{{card.news}}成新<view wx:if='{{card.result != null}}'>支持送货上门的校区：{{card.result}}</view><view wx:if='{{card.addr != null}}'>支持上门取件：{{card.addr}}</view><view wx:if='{{card.notes != null}}'>{{card.notes}}</view></view>
+    <view slot='tags'>
+      <van-tag wx:if='{{card.tag1 != null}}' plain type="danger">{{card.tag1}}</van-tag>
+      <van-tag wx:if='{{card.tag2 != null}}' plain type="danger">{{card.tag2}}</van-tag>
+    </view>
+    <view slot="footer">
+      <van-button data-idx='{{idx}}' plain type="danger" size="mini" bind:click='refresh'>重新上传</van-button>
+    </view>
+    </van-card>
+  </block>
+  <block wx:for="{{card}}" wx:for-item='card' wx:key="property" wx:for-index='idx'>
+    <van-card
+      wx:if="{{card.status == 0}}"
+      price="{{card.price}}"
+      title="{{card.bookName}} • {{card.author}} • {{card.press}}"
+      thumb="{{ card.imagePath }}"
+    >
+    <view slot='desc' style='color:#7D7E80;'>{{card.news}}成新<view wx:if='{{card.result != null}}'>支持送货上门的校区：{{card.result}}</view><view wx:if='{{card.addr != null}}'>支持上门取件：{{card.addr}}</view><view wx:if='{{card.notes != null}}'>{{card.notes}}</view></view>
+    <view slot='tags'>
+      <van-tag wx:if='{{card.tag1 != null}}' plain type="danger">{{card.tag1}}</van-tag>
+      <van-tag wx:if='{{card.tag2 != null}}' plain type="danger">{{card.tag2}}</van-tag>
+    </view>
+    <view slot="footer">
+      <van-button data-idx='{{idx}}' plain type="danger" size="mini" bind:click='modify'>修改</van-button>
+      <van-button data-idx='{{idx}}' type="danger" size="mini" bind:click='remove'>删除</van-button>
+    </view>
+    </van-card>
+  </block>
+</view>
+<block wx:for="{{myOrders}}" wx:for-item="item" wx:for-index="idx" wx:key='property'>
+  <van-panel wx:if="{{item.status != '交易成功'}}" use-footer-slot>
+    <view slot="header">
+      <van-cell-group>
+        <van-cell title="买家：{{item.nickName}}" is-link icon="{{item.buyerAvatarUrl}}" border="{{ false }}">
+        </van-cell>
+      </van-cell-group>
+    </view>
+    <van-card
+      wx:if='{{item != null}}'
+      tag="{{item.status}}"
+      price="{{item.price}}"
+      title="{{item.bookName}} • {{item.author}} • {{item.press}}"
+      thumb="{{ item.imagePath }}"
+    >
+      <view slot='desc' style='color:#7D7E80;'>{{item.news}}成新<view wx:if='{{item.result != null}}'>支持送货上门的校区：{{item.result}}</view><view wx:if='{{item.addr != null}}'>支持上门取件：{{item.addr}}</view><view wx:if='{{item.notes != null}}'>{{item.notes}}</view></view>
+      <view slot="tags">
+        <van-tag  wx:if='{{item.tag1 != null}}'  plain type="danger">{{item.tag1}}</van-tag>
+        <van-tag  wx:if='{{item.tag2 != null}}'  plain type="danger">{{item.tag2}}</van-tag>
+      </view>
+      <view class='footer' slot="footer">
+        <van-button bind:click='onClickChat' data-idx='{{idx}}' size="mini">联系买家</van-button> 
+        <van-button wx:if="{{item.status == '待收货'}}" data-idx='{{idx}}' type="danger" size="mini" bind:click='steps'>查看物流</van-button>
+        <van-button wx:elif="{{item.status == '待发货'}}" data-idx='{{idx}}' type="danger" size="mini" bind:click='manage'>去管理</van-button>
+      </view>
+    </van-card>
+  </van-panel>
+</block>
+<block wx:for="{{card}}" wx:for-item='card' wx:key="property" wx:for-index='idx'>
+  <van-card
+    wx:if="{{card.status == '交易成功'}}"
+    tag="{{card.status}}"
+    price="{{card.price}}"
+    title="{{card.bookName}} • {{card.author}} • {{card.press}}"
+    thumb="{{ card.imagePath }}"
+  >
+    <view slot='desc' style='color:#7D7E80;'>{{card.news}}成新<view wx:if='{{card.result != null}}'>支持送货上门的校区：{{card.result}}</view><view wx:if='{{card.addr != null}}'>支持上门取件：{{card.addr}}</view><view wx:if='{{card.notes != null}}'>{{card.notes}}</view></view>
+    <view slot='tags'>
+      <van-tag wx:if='{{card.tag1 != null}}' plain type="danger">{{card.tag1}}</van-tag>
+      <van-tag wx:if='{{card.tag2 != null}}' plain type="danger">{{card.tag2}}</van-tag>
+    </view>
+    <view slot="footer">
+      <van-button data-idx='{{idx}}' type="danger" size="mini" bind:click='deleteIt'>删除订单</van-button>
+      <van-button data-idx='{{idx}}' plain type="danger" size="mini" bind:click='seeEval'>查看评价</van-button>
+    </view>
+  </van-card>
+</block>
+<view class='bottom'></view>
+<button bindtap='newsell'>新建卖品</button>

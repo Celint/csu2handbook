@@ -1,0 +1,49 @@
+<van-nav-bar
+  left-text="返回"
+  left-arrow
+  bind:click-left="onClickLeft"
+/>
+<view class="img"><image src="../../images/complete.png" mode="aspectFit"/></view>
+<van-cell 
+  wx:if="{{status == '待发货'}}"
+  title="{{location.reciever}} {{location.phone}}" 
+  size="large" 
+  is-link 
+  icon="location-o"
+  url="../chooseLocation/chooseLocation" 
+  link-type="navigateTo"
+  label="{{location.addr}},{{location.detailAddr}}"
+/>  
+<block wx:for='{{card}}' wx:for-item='item' wx:for-index="idx" wx:key='property'>
+  <van-panel use-footer-slot>
+    <view slot="header">
+      <van-cell-group>
+        <van-cell title="{{item.sellerName}}" is-link icon="{{item.avatarUrl}}" border="{{ false }}">
+        </van-cell>
+      </van-cell-group>
+    </view>
+    <van-card
+      wx:if='{{item != null}}'
+      price="{{item.price}}"
+      title="{{item.bookName}} • {{item.author}} • {{item.press}}"
+      thumb="{{ item.imagePath }}"
+    >
+      <view slot='desc' style='color:#7D7E80;'>{{item.news}}成新<view wx:if='{{item.result != null}}'>支持送货上门的校区：{{books.result}}</view><view wx:if='{{item.addr != null}}'>支持上门取件：{{item.addr}}</view></view>
+      <view slot="tags">
+        <van-tag  wx:if='{{item.tag1 != null}}'  plain type="danger">{{item.tag1}}</van-tag>
+        <van-tag  wx:if='{{item.tag2 != null}}'  plain type="danger">{{item.tag2}}</van-tag>
+      </view>
+    </van-card>
+    <view slot="footer">
+      <van-cell-group>
+        <van-cell is-link data-idx="{{idx}}" icon="chat-o" title="联系卖家" bind:click="onClickChat" /> 
+        <van-cell title="商品金额">
+          <view class='price'>￥{{item.price}}</view>
+        </van-cell>
+      </van-cell-group> 
+    </view>
+  </van-panel>    
+</block>
+<van-cell wx:if="{{price != 0}}" title="总金额">
+  <view class='price'>￥{{price}}</view>
+</van-cell>

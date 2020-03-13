@@ -1,0 +1,19 @@
+<block  wx:for='{{location}}' wx:for-item='item' wx:key="property" wx:for-index='idx'>
+  <van-cell-group>
+    <van-cell 
+      title="{{item.reciever}} {{item.phone}}" 
+      size="large" 
+      label="{{item.addr}},{{item.detailAddr}}">
+      <van-checkbox
+        data-idx='{{idx}}' 
+        value="{{ item.checked }}" 
+        bind:change="onChange"
+        slot="icon"/>
+      <view class='buttons' slot="right-icon">
+        <van-button data-idx='{{idx}}' size="mini" plain type="danger" bind:click="modify">修改</van-button>
+        <van-button data-idx='{{idx}}' size="mini" type="danger" bind:click="remove">删除</van-button>
+      </view>
+    </van-cell>
+  </van-cell-group>
+</block> 
+<button bindtap='newaddr'>新增地址</button>

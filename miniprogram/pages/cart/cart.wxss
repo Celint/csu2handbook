@@ -1,0 +1,8 @@
+.bottom{
+  height: 100rpx;
+}
+.img{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}

@@ -1,0 +1,75 @@
+<view class='top'>
+  <van-cell 
+    title="{{location.reciever}} {{location.phone}}" 
+    size="large" 
+    is-link 
+    icon="location-o"
+    url="../chooseLocation/chooseLocation" 
+    link-type="navigateTo"
+    label="{{location.addr}} {{location.detailAddr}}"
+  />
+</view>
+<view class='topMargin'></view>
+<block wx:for='{{books}}' wx:for-item='item' wx:for-index="idx" wx:key='property'>
+  <van-panel use-footer-slot>
+    <view slot="header">
+      <van-cell-group>
+        <van-cell title="{{item.sellerName}}" is-link icon="{{item.avatarUrl}}" border="{{ false }}">
+        </van-cell>
+      </van-cell-group>
+    </view>
+    <van-card
+      wx:if='{{item != null}}'
+      price="{{item.price}}"
+      title="{{item.bookName}} • {{item.author}} • {{item.press}}"
+      thumb="{{ item.imagePath }}"
+    >
+      <view slot='desc' style='color:#7D7E80;'>{{item.news}}成新<view wx:if='{{item.result != null}}'>支持送货上门的校区： 
+      {{item.result}}</view><view wx:if='{{item.addr != null}}'>支持上门取件：{{item.addr}}</view></view>
+      <view slot="tags">
+        <van-tag  wx:if='{{item.tag1 != null}}'  plain type="danger">{{item.tag1}}</van-tag>
+        <van-tag  wx:if='{{item.tag2 != null}}'  plain type="danger">{{item.tag2}}</van-tag>
+      </view>
+    </van-card>
+    <view slot="footer">
+      <van-cell-group>   
+        <van-cell is-link data-idx="{{idx}}" icon="chat-o" title="联系卖家" bind:click="onClickChat" /> 
+        <van-cell title="商品金额">
+          <view class='price'>￥{{item.price}}</view>
+        </van-cell>
+      </van-cell-group> 
+    </view>
+  </van-panel>    
+</block>
+<view class='middle'></view>
+<van-cell wx:if="{{price != 0}}" title="总金额">
+  <view class='price'>￥{{price}}</view>
+</van-cell>
+<view class='bottom'></view>
+<view class='button'>
+  <button class='def' bindtap='cod'>面对面交易</button>
+  <button wx:if='{{userInfo.paymentCode != null}}' type='primary' bindtap='pay'>微信支付</button>
+</view>
+<van-popup
+  show="{{ show }}"
+  position="bottom"
+  overlay="{{ true }}"
+  safe-area-inset-top="true"
+  bind:click-overlay="onClose"
+>
+  <view class='popup'>
+    <view class='title'>长按保存图片到本地相册</view>
+    <view>到支付软件（微信、支付宝等）选择相册扫码支付</view>
+    <image bindtouchstart='timestart' bindtouchend='timeend' bindtap='saveImg' src='{{userInfo.paymentCode}}' mode='aspectFit' />
+    <button class='def' bindtap='payed'>我已完成支付</button>
+  </view>
+</van-popup>
+<van-popup
+  show="{{ save }}"
+  position="bottom"
+  overlay="{{ true }}"
+  safe-area-inset-top="true"
+  bind:click-overlay="onClose1"
+>
+  <view class='save' bindtap='saveImage'>保存到本地相册<view class='bottom'></view></view>  
+</van-popup>

@@ -1,0 +1,32 @@
+<van-search
+  value="{{ value }}"
+  placeholder="请输入搜索关键词"
+  bind:search="onSearch"
+  bind:change="onChange"
+  bind:clear="onClear"
+></van-search>
+<view class='top'></view>
+<block wx:for='{{books}}' wx:for-item='item' wx:for-index="idx" wx:key='property'>
+  <view wx:if="{{item.status == 0}}" data-index='{{idx}}' bindtap='goDetail'>
+    <van-panel use-footer-slot>
+      <view slot="header">
+        <van-cell-group>
+          <van-cell title="{{item.sellerName}}" is-link icon="{{item.avatarUrl}}" border="{{ false }}">
+          </van-cell>
+        </van-cell-group>
+      </view>
+      <van-card
+        wx:if='{{item != null}}'
+        price="{{item.price}}"
+        title="{{item.bookName}} • {{item.author}} • {{item.press}}"
+        thumb="{{ item.imagePath }}"
+      >
+        <view slot='desc' style='color:#7D7E80;'>{{item.news}}成新<view wx:if='{{item.result != null}}'>支持送货上门的校区：{{item.result}}</view><view wx:if='{{item.addr != null}}'>支持上门取件：{{item.addr}}</view></view>
+        <view slot="tags">
+          <van-tag  wx:if='{{item.tag1 != null}}'  plain type="danger">{{item.tag1}}</van-tag>
+          <van-tag  wx:if='{{item.tag2 != null}}'  plain type="danger">{{item.tag2}}</van-tag>
+        </view>
+      </van-card>
+    </van-panel>
+  </view>
+</block>

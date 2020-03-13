@@ -1,0 +1,6 @@
+button{
+  background-color: #1296db;
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+}

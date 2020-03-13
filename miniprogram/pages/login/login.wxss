@@ -1,0 +1,17 @@
+.login{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.login text{
+  margin: 10rpx;
+}
+.login image{
+  width: 128rpx;
+  height: 128rpx;
+  margin: 10rpx;
+}
+.login button{
+  width: 40%;
+  margin: 10rpx;
+}

@@ -1,0 +1,21 @@
+<view wx:if="{{chat == null && myChat == null}}" class='image'><image mode='aspectFit' src='../../images/nothing.png' /></view>
+<van-cell-group wx:if="{{myChat != null}}" title="买家消息">  
+  <block wx:for="myChat" wx:for-item="item" wx:for-index="idx" wx:key='property'>
+    <van-cell wx:if="{{myChat[idx] != null}}" data-idx="{{idx}}" bind:click="myChat" size="large">
+      <view class='title' slot='title'>
+        <view><image class='img' mode='widthFix' src='{{myChat[idx].avatarUrl}}' /></view>
+        <view>{{myChat[idx].nickName}}</view>
+      </view>
+    </van-cell>
+  </block>
+</van-cell-group>
+<van-cell-group wx:if="{{chat != null}}"  title="卖家消息">
+  <block wx:for="chat" wx:for-item="item" wx:for-index="idx" wx:key='property'>
+    <van-cell wx:if="{{chat[idx] != null}}" data-idx="{{idx}}" bind:click="chat" size="large">
+      <view class='title' slot='title'>
+        <view><image class='img' mode='widthFix' src='{{chat[idx].sellerAvatarUrl}}' /></view>
+        <view>{{chat[idx].sellerName}}</view>
+      </view>
+    </van-cell>
+  </block>
+</van-cell-group>

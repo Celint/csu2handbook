@@ -1,0 +1,91 @@
+<view class='img' wx:if='{{uploaded == false}}'>
+  <image src='../../images/plus.png'  mode='aspectFit' bindtap='photo'></image>
+  <text>点击上传二手书照片</text>
+</view>
+<view wx:else class='img'>
+  <image src='{{imagePath}}' mode='aspectFit'></image>
+  <van-button plain type="danger" size="mini" bind:click='upphoto'>重新上传</van-button>
+</view>
+<form bindsubmit='formSubmit' bindreset='formReset'>
+<van-cell-group>
+  <block wx:for='{{form}}' wx:for-item='form' wx:key='property'>
+    <van-field
+      size="large"
+      label="{{form.tip}}"
+      name='{{form.name}}'
+      type="textarea"
+      placeholder="{{form.placeholder}}"
+      autosize='true'
+      border="{{ true }}"
+      required='{{form.required}}'
+      show-confirm-bar
+      title-width='70px'
+      maxlength='{{form.maxlength}}'
+      type='{{form.type}}'
+      clearable='true'
+      bind:input='{{form.input}}'
+    />
+  </block>
+  <van-radio-group value="{{ radio }}">
+    <van-cell-group>
+      <van-cell title="支持送货上门" clickable data-name="1" size="large" bind:click="onClick1">
+        <radio name='1' checked="{{checked1}}" color="#1989fa"></radio>
+      </van-cell>
+      <van-cell title="不支持送货上门" clickable data-name="2" size="large" bind:click="onClick2">
+        <radio checked="{{checked2}}" name="2" color="#1989fa"></radio>
+      </van-cell>
+    </van-cell-group>
+  </van-radio-group>
+  <van-collapse 
+    value="{{ activeNames1 }}" 
+    bind:change="onChange1"
+    wx:if='{{checked1}}'
+  >
+  <van-collapse-item name='1'>
+    <view slot="title"><van-icon color='red' name="star-o" />请选择支持送货上门的校区（多选）</view>
+    <van-checkbox-group value="{{ result }}" bind:change="onChangeCB">
+    <van-cell-group >
+      <van-cell
+        size="large"
+        wx:for="{{ list }}"
+        wx:key="index"
+        title="中南大学{{ item }}"
+        shape='square'
+        clickable
+        data-name="{{ item }}"
+        bind:click="toggle"
+      >
+        <van-checkbox catch:tap="noop" class="checkboxes-{{ item }}" name="{{ item }}" />
+      </van-cell>
+    </van-cell-group>
+  </van-checkbox-group>
+  </van-collapse-item>
+</van-collapse>
+  <van-radio-group value="{{ radio }}" bind:change="onChange">
+    <van-cell-group>
+      <van-cell title="支持买家上门取件" clickable data-name="3" size="large" bind:click="onClick3">
+        <radio checked="{{checked3}}" name="3" color="#1989fa"></radio>
+      </van-cell>
+      <van-cell-group wx:if='{{checked3}}'>
+      <van-field
+        size="large"
+        name="addr"
+        value="{{addr}}"
+        placeholder="请注明地址，例：约定时间在升华公寓楼28栋门口"
+        border="{{ true }}"
+        type="textarea"
+        clearable='true'
+        show-confirm-bar
+        autosize='true'
+        required='true'
+      />
+      </van-cell-group>
+      <van-cell title="不支持买家上门取件" clickable data-name="4" bind:click="onClick4">
+        <radio checked="{{checked4}}" name="4" color="#1989fa"></radio>
+      </van-cell>
+    </van-cell-group>
+  </van-radio-group>
+  <button disabled='{{forbid == true}}' form-type='submit' style='margin:10rpx 0;'>提交</button>
+  <view wx:if="{{forbid == true}}" slot="title" class='picture'><van-icon color='#FFCC00' name="warning-o" />请先上传照片、填写必填信息再提交</view>
+</van-cell-group >
+</form>

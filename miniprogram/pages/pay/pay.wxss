@@ -1,0 +1,47 @@
+.top{
+  position: fixed;
+  top: 0px;
+  left: 0;
+  width: 100%;
+  z-index: 999;
+}
+.topMargin{
+  height: 180rpx;
+}
+.price{
+  color: red
+}
+.middle{
+  height: 50rpx;
+}
+.button{
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+}
+.button button{
+  width: 50%;
+}
+.def {
+  background-color:#1296db;
+}
+.bottom{
+  height: 100rpx
+}
+.popup {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.title {
+  font-weight: bold;
+  font-size: 50rpx;
+}
+.save {
+  font-size: 50rpx;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}

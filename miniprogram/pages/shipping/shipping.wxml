@@ -1,0 +1,33 @@
+<view class='image'><image mode='aspectFit' wx:if="{{count == 0}}" src='../../images/nothing.png'></image></view>
+<block wx:for="{{myOrders}}" wx:for-item="item" wx:for-index="idx" wx:key='property'>
+  <van-panel wx:if="{{item.status == '待发货' || item.status == '待收货'}}" use-footer-slot>
+    <view slot="header">
+      <van-cell-group>
+        <van-cell title="买家：{{item.nickName}}" is-link icon="{{item.buyerAvatarUrl}}" border="{{ false }}">
+        </van-cell>
+      </van-cell-group>
+    </view>
+    <van-card
+      wx:if='{{item != null}}'
+      tag="{{item.reject}}"
+      price="{{item.price}}"
+      title="{{item.bookName}} • {{item.author}} • {{item.press}}"
+      thumb="{{ item.imagePath }}"
+    >
+      <view slot="tags">
+        <van-tag  wx:if='{{item.tag1 != null}}'  plain type="danger">{{item.tag1}}</van-tag>
+        <van-tag  wx:if='{{item.tag2 != null}}'  plain type="danger">{{item.tag2}}</van-tag>
+      </view>
+      <view slot='desc' style='color:#7D7E80;'>{{item.news}}成新<view wx:if='{{item.result != null}}'>支持送货上门的校区： 
+      {{item.result}}</view><view wx:if='{{item.addr != null}}'>支持上门取件：{{item.addr}}</view></view>
+      <view class='footer' slot="footer">
+        <van-button bindtap='onClickChat' data-idx='{{idx}}' size="small">联系买家</van-button> 
+        <view wx:if="{{item.status == '待发货'}}">
+          <van-button wx:if="{{item.reject == '已申请退货'}}" data-idx='{{idx}}' type="danger" size="mini" bind:click='agree'>同意退货</van-button>
+          <van-button wx:else data-idx='{{idx}}' type="danger" size="mini" bind:click='toSend'>发货</van-button>
+        </view>
+        <van-button wx:elif="{{item.status == '待收货'}}" data-idx='{{idx}}' plain type="danger" size="mini" bind:click='steps'>查看物流</van-button>
+      </view>
+    </van-card>
+  </van-panel>
+</block>

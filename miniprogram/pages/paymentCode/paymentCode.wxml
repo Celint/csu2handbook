@@ -1,0 +1,12 @@
+<view class='img' wx:if="{{ userInfo.paymentCode == null}}">
+  <image src='../../images/qr.png' mode='aspectFit'></image>
+  <van-button plain type="primary" bind:click='qrcode'>点击上传收款码</van-button>
+</view>
+<view class='img' wx:if="{{ userInfo.paymentCode != null}}">
+  <image src='{{userInfo.paymentCode}}' mode='aspectFit'></image>
+  <view class='button'>
+    <van-button plain type="danger" bind:click='qrcode'>重新上传收款码</van-button>
+    <van-button type="danger" bind:click='deleteCode'>删除收款码</van-button>
+  </view>
+</view>
+<view>卖家请注意，收款码适用于线上交易与线下交易，请谨慎选择使用收款码。</view>

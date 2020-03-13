@@ -1,0 +1,14 @@
+.img{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+van-field{
+  margin: 2rpx;
+}
+van-cell{
+  margin: 2rpx;
+}
+button{
+  background-color: #1296db;
+}

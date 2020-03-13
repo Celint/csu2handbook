@@ -1,0 +1,33 @@
+<van-card
+  wx:if='{{myOrders != null}}'
+  tag="{{myOrders.reject}}"
+  price="{{myOrders.price}}"
+  title="{{myOrders.bookName}} • {{myOrders.author}} • {{myOrders.press}}"
+  thumb="{{ myOrders.imagePath }}"
+>
+  <view slot='desc' style='color:#7D7E80;'>{{myOrders.news}}成新<view wx:if='{{myOrders.result != null}}'>支持送货上门的校区： 
+  {{myOrders.result}}</view><view wx:if='{{myOrders.addr != null}}'>支持上门取件：{{myOrders.addr}}</view></view>
+  <view slot="tags">
+    <van-tag  wx:if='{{myOrders.tag1 != null}}'  plain type="danger">{{myOrders.tag1}}</van-tag>
+    <van-tag  wx:if='{{myOrders.tag2 != null}}'  plain type="danger">{{myOrders.tag2}}</van-tag>
+  </view>
+</van-card>
+<van-cell-group>
+  <van-cell 
+    size="large" 
+    title="{{location.reciever}} {{location.phone}}" 
+    label="{{location.addr}},{{location.detailAddr}}" 
+    icon="location-o"
+  />
+</van-cell-group>
+<van-cell 
+  wx:if="{{myOrders.kuaidi == false}}"
+  size="large" 
+  title="面对面交易" 
+/>
+<van-cell-group wx:for="{{steps}}" wx:for-item="item" wx:for-index="idx" wx:key='property'>
+  <van-cell size="large" title="{{item.remark}}" label="{{item.datetime}}">
+    <van-icon wx:if="{{idx == 0}}" slot="icon" name="passed" color='#1296db'/>
+    <van-icon wx:else slot="icon" name="upgrade"/>
+  </van-cell>
+</van-cell-group>

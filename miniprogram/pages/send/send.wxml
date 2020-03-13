@@ -1,0 +1,84 @@
+<van-card
+  tag="{{myOrders.status}}"
+  price="{{myOrders.price}}"
+  title="{{myOrders.bookName}} • {{myOrders.author}} • {{myOrders.press}}"
+  thumb="{{ myOrders.imagePath }}"
+>
+  <view slot='desc' style='color:#7D7E80;'>{{item.news}}成新<view wx:if='{{item.result != null}}'>支持送货上门的校区： 
+  {{item.result}}</view><view wx:if='{{item.addr != null}}'>支持上门取件：{{item.addr}}</view></view>
+  <view slot="tags">
+    <van-tag  wx:if='{{myOrders.tag1 != null}}'  plain type="danger">{{myOrders.tag1}}</van-tag>
+    <van-tag  wx:if='{{myOrders.tag2 != null}}'  plain type="danger">{{myOrders.tag2}}</van-tag>
+  </view>
+  <view slot="footer">
+    <van-button wx:if="{{myOrders.pay == true}}" type="danger" plain size="small" bind:click='ret'>退款并退货</van-button>
+  </view>
+</van-card>
+<van-cell-group>
+  <van-cell 
+    title="{{location.reciever}} {{location.phone}}" 
+    size="large" 
+    icon="location-o"
+    label="{{location.addr}} {{location.detailAddr}}"
+  />
+</van-cell-group>
+<van-cell-group>
+  <van-cell title="不使用快递" clickable data-name="1" size="large" bind:click='notUse'>
+    <radio name='1' checked="{{checked1}}" color="#1989fa"></radio>
+  </van-cell>
+  <van-cell title="使用快递" clickable data-name="2" size="large" bind:click='use'>
+    <radio name='2' checked="{{checked2}}" color="#1989fa"></radio>
+  </van-cell>
+  <view wx:if="{{checked2 == true}}">
+    <van-cell
+      title="请选择快递公司"
+      icon="tosend"
+      size="large"
+    >
+      <picker bindchange="bindPickerChange" value="{{index}}" range="{{array}}">
+        <view>
+          当前选择：{{array[index]}}
+        </view>
+      </picker>
+    </van-cell>
+    <van-field    
+      name="expressId"
+      size="large"
+      placeholder="请输入快递单号"
+      border="{{ true }}"
+      type="text"
+      show-confirm-bar
+      clearable='true'
+      autosize='true'
+      bind:input='detailAddInput'
+    />
+    <van-field   
+      wx:if="{{sf}}" 
+      name="senderPhone"
+      size="large"
+      placeholder="请输入顺丰快递寄件人手机后4位"
+      border="{{ true }}"
+      type='number'
+      maxlength='4'
+      show-confirm-bar
+      clearable='true'
+      autosize='true'
+      bind:input='sender'
+    />
+    <van-field    
+      wx:if="{{sf}}" 
+      name="receiverPhone"
+      size="large"
+      placeholder="请输入顺丰快递收件人手机后4位"
+      border="{{ true }}"
+      type='number'
+      maxlength='4'
+      show-confirm-bar
+      clearable='true'
+      autosize='true'
+      bind:input='receiver'
+    />
+  </view>
+</van-cell-group>
+<button wx:if="{{flag == true}}" class='button' bindtap='com'>确定发货</button>
+<button wx:if="{{flag == false}}" disabled="true">请填写完全部信息</button>

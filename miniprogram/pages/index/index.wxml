@@ -1,0 +1,53 @@
+<block>
+  <view class='user'>
+    <image src='{{userInfo.avatarUrl}}'></image>
+    <text>{{userInfo.nickName}}</text>
+  </view>
+  <van-cell
+    title="我的订单"
+    value="查看全部订单"
+    size="large"
+    is-link
+    bind:click="allOrders"
+  />
+  <van-tabbar
+    active="{{ active }}"
+    color="red"
+    active-color='#7D7E80'
+    fixed="{{false}}"
+  >
+    <van-tabbar-item wx:if="{{toSend != 0}}" icon="send-gift-o" info="{{toSend}}" bindtap="toSend">待发货</van-tabbar-item>
+    <van-tabbar-item wx:else icon="send-gift-o" bindtap="toSend">待发货</van-tabbar-item>
+    <van-tabbar-item wx:if="{{recieve != 0}}" icon="logistics" info="{{recieve}}" bindtap="toRecieve">待收货</van-tabbar-item>
+    <van-tabbar-item wx:else icon="logistics" bindtap="toRecieve">待收货</van-tabbar-item>
+    <van-tabbar-item wx:if="{{comment != 0}}" icon="comment-o" info="{{comment}}" bindtap="toComment">待评价</van-tabbar-item>
+    <van-tabbar-item wx:else icon="comment-o" bindtap="toComment">待评价</van-tabbar-item>
+  </van-tabbar>
+  <van-cell
+    title="我的卖品"
+    is-link
+    url="../mySell/mySell"
+    size="large"
+  ><view wx:if="{{mySell != 0}}" class='status'>{{mySell}}</view>
+  </van-cell>
+  <van-cell
+  title="我的收款码"
+  is-link
+  url="../paymentCode/paymentCode"
+  size="large"
+  />
+  <van-cell
+  title="卖品发货"
+  is-link
+  url="../shipping/shipping"
+  size="large"
+  ><view wx:if="{{send != 0}}" class='status'>{{send}}</view>
+  </van-cell>
+  <van-cell
+  title="地址管理"
+  is-link
+  url="../location/location"
+  size="large"
+  ><view wx:if="{{myLocation != 0}}" class='status'>{{myLocation}}</view>
+  </van-cell>
+</block>

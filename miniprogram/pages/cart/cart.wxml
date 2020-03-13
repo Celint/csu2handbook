@@ -1,0 +1,44 @@
+<view class='img' wx:if="{{books.length == 0}}">
+  <image src='../../images/empty.png' mode='aspectFit'></image>
+</view>
+<block wx:for='{{books}}' wx:for-item='item' wx:for-index="idx" wx:key='property'>
+  <van-panel use-footer-slot>
+    <view slot="header">
+      <van-cell-group>
+        <van-cell title="{{item.sellerName}}" is-link icon="{{item.avatarUrl}}" border="{{ false }}">
+        </van-cell>
+      </van-cell-group>
+    </view>
+    <van-row>
+      <van-col span="2">
+        <van-checkbox data-idx='{{idx}}' value="{{ item.checked }}" bind:change="onChange"></van-checkbox>
+      </van-col>
+      <van-col span="22">
+        <van-card
+          price="{{item.price}}"
+          title="{{item.bookName}} • {{item.author}} • {{item.press}}"
+          thumb="{{ item.imagePath }}"
+        >
+          <view slot='desc' style='color:#7D7E80;'>{{item.news}}成新<view wx:if='{{item.result != null}}'>支持送货上门的校区：{{item.result}}</view><view wx:if='{{item.addr != null}}'>支持上门取件：{{item.addr}}</view></view>
+          <view slot="tags">
+            <van-tag  wx:if='{{item.tag1 != null}}'  plain type="danger">{{item.tag1}}</van-tag>
+            <van-tag  wx:if='{{item.tag2 != null}}'  plain type="danger">{{item.tag2}}</van-tag>
+          </view>
+          <view slot="footer">
+            <van-button size='mini' plain type="danger" data-index='{{idx}}' bindtap='goDetail'>详情</van-button>
+          </view>
+        </van-card>
+      </van-col>
+    </van-row>
+  </van-panel>
+</block>  
+<view class='bottom'></view>
+<van-submit-bar
+  wx:if="{{books.length != 0}}"
+  price="{{ price }}"
+  button-text="提交订单"
+  bind:submit="onClickButton"
+>
+  <van-checkbox value="{{ all }}" bind:change="allChange">全选</van-checkbox>
+  <van-button wx:if="{{checked}}" plain type="danger" size="mini" bind:click="remove">删除</van-button>
+</van-submit-bar>

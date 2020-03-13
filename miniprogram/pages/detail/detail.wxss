@@ -1,0 +1,34 @@
+.img{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.price {
+  font-size: 40rpx;
+  color: red;
+  position: relative;
+  margin: 25rpx;
+}
+.bookname{
+  font-size: 50rpx;
+  font-weight: 700;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.news{
+  display: flex;
+  flex-direction: row-reverse;
+  justify-content: space-around;
+  font-size: 35rpx;
+  color: red;
+}
+.bottom{
+  height: 100rpx;
+}
+.save {
+  font-size: 50rpx;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}

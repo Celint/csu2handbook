@@ -1,0 +1,15 @@
+button{
+  background-color: #1296db;
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+}
+.buttons{
+  display: flex;
+  flex-direction: column;
+}
+.image {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}

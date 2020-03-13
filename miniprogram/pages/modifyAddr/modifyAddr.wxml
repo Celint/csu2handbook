@@ -1,0 +1,93 @@
+<form bindsubmit='saveit'>
+<van-cell-group>
+  <van-field
+    name="reciever"
+    size="large"
+    value="{{reciever}}"
+    placeholder="收货人"
+    icon="manager-o"
+    border="{{ true }}"
+    clearable='true'
+    bind:input='recieverInput'
+  />
+  <van-field
+    name="phone"
+    size="large"
+    value="{{phone}}"
+    placeholder="手机号码 +86"
+    type='number'
+    required="{{required}}"
+    border="{{ true }}"
+    maxlength='11'
+    clearable='true'
+    bind:input='phoneInput'
+  />
+</van-cell-group>
+<van-radio-group>
+  <van-cell-group>
+    <van-cell title="我是CSUer" clickable data-name="1" size="large" bind:click='isCsuer'>
+      <radio name='1' checked="{{checked1}}" color="#1989fa"></radio>
+    </van-cell>
+    <van-cell title="我是其他地区的" clickable data-name="2" size="large" bind:click='notCsuer'>
+      <radio name='2' checked="{{checked2}}" color="#1989fa"></radio>
+    </van-cell>
+  </van-cell-group>
+</van-radio-group>
+<view class="section" wx:if="{{checked1}}">
+  <van-cell
+  title="请选择校区"
+  icon="location-o"
+  size="large"
+  >
+    <picker bindchange="bindPickerChange" value="{{index}}" range="{{array1}}">
+      <view class="picker">
+        当前选择：{{array1[index]}}
+      </view>
+    </picker>
+  </van-cell>
+  <van-cell-group>
+  <van-field
+    name="detailAddr"
+    size="large"
+    value="{{detailAddr}}"
+    placeholder="请输入公寓楼"
+    border="{{ true }}"
+    type="textarea"
+    clearable='true'
+    autosize='true'
+    bind:input='detailAddInput'
+  />
+  </van-cell-group>
+</view>
+<view wx:if="{{checked2}}" >
+  <van-cell
+  title="请选择省市区"
+  icon="location-o"
+  size="large"
+  >
+   <picker
+    mode="region"
+    bindchange="bindRegionChange"
+    value="{{region}}"
+    custom-item="{{customItem}}"
+   ><view class="picker">
+      {{region[0]}} {{region[1]}} {{region[2]}}
+    </view>
+  </picker>
+  </van-cell>
+  <van-cell-group>
+  <van-field
+    name="detailAddr"
+    size="large"
+    value="{{detailAddr}}"
+    placeholder="详细地址：如道路、门牌号、小区、楼栋号、单元室等"
+    border="{{ true }}"
+    type="textarea"
+    clearable='true'
+    autosize='true'
+    bind:input='detailAddInput'
+  />
+  </van-cell-group>
+</view>
+<button disabled='{{forbid == true}}' form-type='submit'>保存</button>
+</form>

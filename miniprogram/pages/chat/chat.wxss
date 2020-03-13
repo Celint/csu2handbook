@@ -1,0 +1,113 @@
+.left-bubble{
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+.left-bubble .bubble{
+  width: 50%;
+  font-size: 40rpx;
+  line-height: 50rpx;
+  padding-left: 20rpx;
+  position: relative;
+  margin: 40rpx auto 0 0;
+  background-color: white;
+  border: 1px solid rgb(26, 24, 25);
+  border-radius: 5px;
+  top: -5px;
+}
+.left-bubble image{
+  width: 12%;
+}
+.right-bubble{
+  display: flex;
+  flex-direction: row-reverse;
+  align-items: center;
+}
+.right-bubble .bubble{
+  width: 50%;
+  font-size: 40rpx;
+  line-height: 50rpx;
+  padding-left: 20rpx;
+  position: relative;
+  margin: 40rpx 0 0 0;
+  background-color: #1296db;
+  border: 1px solid rgb(26, 24, 25);
+  border-radius: 5px;
+  top: -5px;
+}
+.right-bubble image{
+  position: relative;
+  top: 8px;
+  width: 12%;
+}
+
+.avatarUrl{
+  width: 100rpx;
+  height: 100rpx;
+  border-radius: 50%;
+}
+
+.time{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  font-size: 30rpx;
+  color: #1296db;
+}
+
+form{
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+  background-color: #dfffff;
+}
+.send{
+  display: flex;
+  flex-direction: row;
+  align-items: flex-end;
+  padding: 10px;
+  bottom: 10px;
+}
+.send textarea {
+  padding-left: 20rpx;
+  border-radius: 15px;
+  height: 50rpx;
+  width: 70%;
+  background-color: white;
+}
+.send button{
+  border-radius: 15px;
+  background-color: #1296db
+}
+.send .icon {
+  position: relative;
+  left: 10rpx;
+}
+.left-image{
+  position: relative;
+  top: 10px;
+  display: flex;
+  flex-direction: row;
+}
+.left-image .img {
+  position: relative;
+  left: 0;
+  width: 60%
+}
+.right-image{
+  position: relative;
+  top: 10px;
+  display: flex;
+  flex-direction: row-reverse;
+}
+.right-image .img {
+  position: relative;
+  right: 0;
+  width: 60%
+}
+.bottom {
+  height: 120rpx;
+}
+.save {
+  margin: 30rpx;
+}

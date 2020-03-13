@@ -1,0 +1,14 @@
+.user{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.user image{
+  width: 128rpx;
+  height: 128rpx;
+  margin: 20rpx;
+  border-radius: 50%;
+}
+.user text{     
+  color: #1296db;
+}

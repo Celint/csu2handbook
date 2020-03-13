@@ -1,0 +1,17 @@
+.img{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.picture{
+  display: flex;
+  border-radius: 5rpx;
+  color: #FFCC00;
+}
+.img text {
+  font-size: 25rpx;
+  color: #FFCC00;
+}
+button {
+  background-color: #1296db;
+}

@@ -1,0 +1,64 @@
+{
+  "pages": [
+    "pages/home/home",
+    "pages/index/index",
+    "pages/mySell/mySell",
+    "pages/upload/upload",
+    "pages/modify/modify",
+    "pages/location/location",
+    "pages/cart/cart",
+    "pages/message/message",
+    "pages/newaddr/newaddr",
+    "pages/modifyAddr/modifyAddr",
+    "pages/pay/pay",
+    "pages/comment/comment",
+    "pages/detail/detail",
+    "pages/chat/chat",
+    "pages/chooseLocation/chooseLocation",
+    "pages/myOrders/myOrders",
+    "pages/login/login",
+    "pages/paymentCode/paymentCode",
+    "pages/shipping/shipping",
+    "pages/order/order",
+    "pages/send/send",
+    "pages/steps/steps",
+    "pages/myComment/myComment",
+    "pages/myChat/myChat"
+  ],
+  "window": {
+    "backgroundColor": "#F6F6F6",
+    "backgroundTextStyle": "light",
+    "navigationBarBackgroundColor": "#efffff",
+    "navigationBarTitleText": "CSU二手书交易平台",
+    "navigationBarTextStyle": "black"
+  },
+  "sitemapLocation": "sitemap.json",
+  "tabBar": {
+    "color": "#bfbfbf",
+    "selectedColor": "#1296db",
+    "backgroundColor": "#efffff",
+    "borderStyle": "white",
+    "list": [{
+      "pagePath": "pages/home/home",
+      "text": "主页",
+      "iconPath": "images/home.png",
+      "selectedIconPath": "images/home-o.png"
+    },{
+      "pagePath": "pages/message/message",
+      "text": "消息",
+      "iconPath": "images/message.png",
+      "selectedIconPath": "images/message-o.png"
+    },
+    {
+      "pagePath": "pages/cart/cart",
+      "text": "购物车",
+      "iconPath": "images/cart.png",
+      "selectedIconPath": "images/cart-o.png"
+    },{
+      "pagePath": "pages/index/index",
+      "text": "我的",
+      "iconPath": "images/me.png",
+      "selectedIconPath": "images/me-o.png"
+    }]
+  }
+}

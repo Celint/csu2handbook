@@ -1,0 +1,30 @@
+<van-card
+  tag="{{myOrders.status}}"
+  price="{{myOrders.price}}"
+  title="{{myOrders.bookName}} • {{myOrders.author}} • {{myOrders.press}}"
+  thumb="{{ myOrders.imagePath }}"
+>
+  <view slot='desc' style='color:#7D7E80;'>{{myOrders.news}}成新</view>
+  <view slot="tags">
+    <van-tag  wx:if='{{myOrders.tag1 != null}}'  plain type="danger">{{myOrders.tag1}}</van-tag>
+    <van-tag  wx:if='{{myOrders.tag2 != null}}'  plain type="danger">{{myOrders.tag2}}</van-tag>
+  </view>
+</van-card>
+<van-cell-group>
+  <van-cell title="买家评价：{{myOrders.value}}" border="{{ false }}" />
+  <van-cell wx:if="{{myOrders.value1 == 5}}" title="描述相符：非常好" border="{{ false }}" />
+  <van-cell wx:elif="{{myOrders.value1 == 4}}" title="描述相符：好" border="{{ false }}" />
+  <van-cell wx:elif="{{myOrders.value1 == 3}}" title="描述相符：一般" border="{{ false }}" />
+  <van-cell wx:elif="{{myOrders.value1 == 2}}" title="描述相符：差" border="{{ false }}" />
+  <van-cell wx:elif="{{myOrders.value1 == 1}}" title="描述相符：非常差" border="{{ false }}" />
+  <van-cell wx:if="{{myOrders.value2 == 5}}" title="物流速度：非常好" border="{{ false }}" />
+  <van-cell wx:elif="{{myOrders.value2 == 4}}" title="物流速度：好" border="{{ false }}" />
+  <van-cell wx:elif="{{myOrders.value2 == 3}}" title="物流速度：一般" border="{{ false }}" />
+  <van-cell wx:elif="{{myOrders.value2 == 2}}" title="物流速度：差" border="{{ false }}" />
+  <van-cell wx:elif="{{myOrders.value2 == 1}}" title="物流速度：非常差" border="{{ false }}" />
+  <van-cell wx:if="{{myOrders.value3 == 5}}" title="服务态度：非常好" border="{{ false }}" />
+  <van-cell wx:elif="{{myOrders.value3 == 4}}" title="服务态度：好" border="{{ false }}" />
+  <van-cell wx:elif="{{myOrders.value3 == 3}}" title="服务态度：一般" border="{{ false }}" />
+  <van-cell wx:elif="{{myOrders.value3 == 2}}" title="服务态度：差" border="{{ false }}" />
+  <van-cell wx:elif="{{myOrders.value3 == 1}}" title="服务态度：非常差" border="{{ false }}" />
+</van-cell-group>

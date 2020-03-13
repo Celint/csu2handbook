@@ -1,0 +1,5 @@
+<view class='login'>
+  <image src='../../images/logo.png'></image>
+  <text>CSU二手书交易平台</text>
+  <button type='primary' open-type='getUserInfo' bindgetuserinfo='getUserInfo'>点击授权登录</button>
+</view>

@@ -1,0 +1,50 @@
+<view bindtap='fresh'>
+  <block wx:for="{{chatInfo.chats}}" wx:for-item="item" wx:for-index="idx" wx:key='property'>
+    <view class='time'> 
+      <view wx:if="{{idx == 0}}">{{item.year}}/{{item.month}}/{{item.date}} {{item.hour}}:{{item.minute}}</view>
+      <view wx:if="{{idx != 0 && (item.year != chatInfo.chats[idx-1].year || item.month != chatInfo.chats[idx-1].month || item.date != chatInfo.chats[idx-1].date || item.hour != chatInfo.chats[idx-1].hour || item.minute - chatInfo.chats[idx-1].minute > 5)}}">{{item.year}}/{{item.month}}/{{item.date}} {{item.hour}}:{{item.minute}}</view>
+    </view>
+    <view>
+      <view wx:if="{{item.user == 1 && item.imagePath == null}}" class='left-bubble'>
+        <image mode='widthFix' class='avatarUrl' src='{{chatInfo.avatarUrl}}'></image>
+        <image mode='widthFix' src='../../images/left.png'></image>
+        <view class="bubble">
+          {{item.chatInfo}}
+        </view>
+      </view>  
+      <view wx:if="{{item.user == 1  && item.imagePath != null}}" class='left-image'>
+        <image mode='widthFix' class='avatarUrl' src='{{chatInfo.avatarUrl}}'></image>
+        <image class='img' data-idx='{{idx}}' mode='aspectFit' bindtouchstart='timestart' bindtouchend='timeend' bindtap='saveImg' src='{{item.imagePath}}'></image>
+      </view>  
+      <view wx:if="{{item.user == 0 && item.imagePath == null}}" class='right-bubble'>
+        <image mode='widthFix' class='avatarUrl' src='{{chatInfo.sellerAvatarUrl}}'></image>
+        <image mode='widthFix' src='../../images/right.png'></image>
+        <view class="bubble">
+          {{item.chatInfo}}
+        </view>
+      </view>
+      <view wx:if="{{item.user == 0 && item.imagePath != null}}" class='right-image'>
+        <image mode='widthFix' class='avatarUrl' src='{{chatInfo.sellerAvatarUrl}}'></image>
+        <image class='img' data-idx='{{idx}}' mode='aspectFit' bindtouchstart='timestart' bindtouchend='timeend' bindtap='saveImg' src='{{item.imagePath}}'></image>
+      </view>  
+    </view>
+  </block>
+  <view class='bottom'></view>
+  <form bindsubmit="formSubmit">  
+    <view class='send'>
+      <textarea 
+        bindtap='input' 
+        bindblur="notInput" 
+        focus="{{focus}}" 
+        name="textarea" 
+        show-confirm-bar="{{false}}" 
+        value="{{chat}}" 
+        maxlength="-1" 
+        cursor-spacing="10"
+      />
+      <view class='icon' bindtap='photo'><van-icon size="45rpx" name="photo" /></view>
+      <button form-type="submit" size='mini'>发送</button>
+    </view>
+  </form>
+  <van-popup show="{{ show }}" bind:close="onClose"><view bindtap='saveIt' class='save'>保存图片</view></van-popup>
+</view>
